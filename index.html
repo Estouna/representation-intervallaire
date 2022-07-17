@@ -15,10 +15,10 @@
 
 <body class="body">
     <main class="column centerAll">
-        <h1 class="h1 fs-4 mt-2 p-1">La représentation intervallaire</h1>
-        <section class="section column w-70-limit my-4 p-1">
+        <h1 class="h1 fs-4 mt-2 p-1-limit">La représentation intervallaire</h1>
+        <section class="section column w-70-limit my-4 p-1-limit rounded-3">
 
-            <p class="text my-2 p-1">
+            <p class="text my-2 p-1-limit">
                 La représentation intervallaire est un système qui va permettre au sein d'une table de stocker
                 des données qui sont organisées hiérarchiquement.
             </p>
@@ -28,14 +28,17 @@
                     alt="Croquis de l'organisation des catégories">
             </figure>
 
-            <p class="text my-2 p-1">
+            <p class="text my-2 p-1-limit">
                 Le croquis ci-dessus montre un exemple concret, celui d'un site.</br>
+                </br>
                 En effet sur ce site on trouve des catégories qui ont des sous-catégories et ces sous-catégories ont
                 elles-mêmes des
                 sous-catégories et ainsi de suite jusqu'a l'infini.</br>
                 Comment stocker ça sur une base de données ?</br>
                 La première solution qui paraît la plus naturelle est de mettre un parent_id, nous allons voir les
-                défauts de ce système.
+                défauts de ce système.</br>
+                </br>
+                Table avec parent_id :
             </p>
 
             <figure class="flex justify-center w-100 my-1">
@@ -43,8 +46,9 @@
                     alt="Image de la base de données">
             </figure>
 
-            <p class="text my-2 p-1">
+            <p class="text my-2 p-1-limit">
                 Nous avons donc à chaque fois un parent_id :</br>
+                </br>
                 - <span class="red-text">Blog</span> est la catégorie racine comme il n'a pas de parent il a la valeur
                 0.</br>
                 - <span class="blue-text">Graphisme</span> est une sous-catégorie de <span class="red-text">Blog</span>,
@@ -57,14 +61,16 @@
                 - Et ainsi de suite...
             </p>
 
-            <p class="text mb-2 p-1">
+            <p class="text mb-2 p-1-limit">
                 Nous allons voir pourquoi ce système à des limites et pourquoi on va utilser l'intervallaire.</br>
+                </br>
                 Par exemple si on prend la catégorie <span class="violet-text">2D</span> et que l'on veut savoir si elle
                 appartient à <span class="red-text">Blog</span> ou <span class="green-text">Portfolio</span>.</br>
                 Nous faisons une requête en prenant l'id de la catégorie <span class="violet-text">2D</span> donc l'id 5
                 :</br>
-                SELECT * FROM 'categories_parent' WHERE id = 5;</br>
-                Résultat :
+                SELECT * FROM `categories_parent` WHERE id = 5;</br>
+                </br>
+                Résultat de la requête :
             </p>
 
             <figure class="w-100">
@@ -72,12 +78,14 @@
                     alt="Image résultat de la requête">
             </figure>
 
-            <p class="text my-2 p-1">
+            <p class="text my-2 p-1-limit">
                 Nous voyons que la catégorie <span class="violet-text">2D</span> à comme parent la catégorie avec l'id
                 2.</br>
+                </br>
                 Nous refaisons une requête pour chercher l'id 2 :</br>
-                SELECT * FROM 'categories_parent' WHERE id = 2;</br>
-                Résultat :
+                SELECT * FROM `categories_parent` WHERE id = 2;</br>
+                </br>
+                Résultat de la requête :
             </p>
 
             <figure class="w-100">
@@ -85,12 +93,14 @@
                     alt="Image résultat de la requête">
             </figure>
 
-            <p class="text my-2 p-1">
+            <p class="text my-2 p-1-limit">
                 Nous voyons maintenant que la catégorie avec l'id 2 est <span class="blue-text">Graphisme</span> et
                 qu'elle a comme parent l'id 1.</br>
+                </br>
                 Nous refaisons encore une requête pour chercher l'id 1 :</br>
-                SELECT * FROM 'categories_parent' WHERE id = 1;</br>
-                Résultat :
+                SELECT * FROM `categories_parent` WHERE id = 1;</br>
+                </br>
+                Résultat de la requête :
             </p>
 
             <figure class="w-100">
@@ -98,15 +108,17 @@
                     alt="Image résultat de la requête">
             </figure>
 
-            <p class="text my-2 p-1">
+            <p class="text my-2 p-1-limit">
                 Nous arrivons enfin au bout en voyant la catégorie <span class="red-text">Blog</span> avec un parent_id
                 0, il aura fallu faire trois requêtes.</br>
+                </br>
                 Imaginez que nous ayons une profondeur de 18 sous-catégories, il faudrait faire 18 requêtes.</br>
                 Il y a en plus un autre problème comment récupérer tous les enfants de la catégorie <span
                     class="red-text">Blog</span>.</br>
                 Si on fait cette requête :
-                SELECT * FROM 'categories_parent' WHERE parent_id = 1;</br>
-                Résultat :
+                SELECT * FROM `categories_parent` WHERE parent_id = 1;</br>
+                </br>
+                Résultat de la requête :
             </p>
 
             <figure class="w-100">
@@ -114,10 +126,13 @@
                     alt="Image résultat de la requête">
             </figure>
 
-            <p class="text my-2 p-1">
-                Nous ne récupérons que les enfants directs mais pas leurs sous-catégories, pour pouvoir les récupérer il
-                faut faire une autre requête.</br>
-                SELECT * FROM 'categories_parent' WHERE parent_id IN (2,3,4);</br>
+            <p class="text my-2 p-1-limit">
+                Nous ne récupérons que les enfants directs mais pas leurs sous-catégories.</br>
+                </br>
+                Pour pouvoir les récupérer il faut faire une autre requête.</br>
+                SELECT * FROM `categories_parent` WHERE parent_id IN (2,3,4);</br>
+                </br>
+                Résultat de la requête :
             </p>
 
             <figure class="w-100">
@@ -125,23 +140,27 @@
                     alt="Image résultat de la requête">
             </figure>
 
-            <p class="text my-2 p-1">
+            <p class="text my-2 p-1-limit">
                 En faisant cela nous avons les sous-catégories, mais rien ne nous dit que nous sommes en bout de chaîne,
-                ces enfants pourraient encore avoir des sous-catégories...</br>
+                ces enfants pourraient aussi avoir des sous-catégories...</br>
+                </br>
                 Donc on voit que c'est problématique, on est obligé de faire plusieurs requêtes, alors qu'on pourrait le
                 faire en une seule requête.</br>
-                C'est la que la représentation intervallaire entre en jeu.
+                C'est là que la représentation intervallaire entre en jeu.
             </p>
 
 
-            <p class="text my-2 p-1">
+            <p class="text my-2 p-1-limit">
                 La représentation intervallaire est un peu compliquée à expliquer, je vais essayer d'être le plus clair
                 possible.</br>
+                </br>
                 On ne va plus représenter l'arborescence avec un champ parent_id, mais en utilsant ce qu'on appelle un
                 intervalle (d'où le nom).</br>
                 Le principe c'est d'avoir un intervalle qui est défini par un bord gauche et par un bord droit pour
                 chaque catégorie ou sous-catégorie, ce bord gauche et ce bord droit vont permettre de faire des requêtes
                 plus complexes.</br>
+                </br>
+                Croquis du site :
             </p>
 
             <figure class="flex justify-center w-100 my-1">
@@ -149,8 +168,9 @@
                     alt="Croquis de l'organisation des catégories">
             </figure>
 
-            <p class="text my-2 p-1">
+            <p class="text my-2 p-1-limit">
                 L'exemple du croquis nous indique que :</br>
+                </br>
                 - La catégorie <span class="red-text">Blog</span> à un bord gauche à 1 et un bord droit à 20, nous avons
                 donc un intervalle de 1 à 20.</br>
                 - Les sous-catégories de <span class="red-text">Blog</span> ont aussi un intervalle mais qui doit être
@@ -162,8 +182,9 @@
                 l'infini avec des intervalles plus grands.</br>
             </p>
 
-            <p class="text mb-2 p-1">
+            <p class="text mb-2 p-1-limit">
                 Pour résumé le croquis nous savons qu'entre l'intervalle :</br>
+                </br>
                 - 1 et 20 se trouvent les sous-catégories de <span class="red-text">Blog</span></br>
                 - 2 et 7 les sous-catégories de <span class="blue-text">Graphisme</span></br>
                 - 8 et 13 les sous-catégories de <span class="blue-text">Music</span></br>
@@ -171,18 +192,21 @@
                 - 21 et 26 les sous-catégories de <span class="green-text">Portfolio</span></br>
             </p>
 
-            <p class="text mb-2 p-1">
+            <p class="text mb-2 p-1-limit">
                 Nous allons maintenant voir comment construire le début de l'arbre.</br>
+                </br>
                 On commence par créer une table categories_interval avec cinq colonnes.</br>
-                Le premier champ sera l'id en primary et auto_increment.</br>
-                Le deuxième champ sera pour le nom de la catégorie et s'appellera name.</br>
+                - Le premier champ sera l'id en primary et auto_increment.</br>
+                - Le deuxième champ sera pour le nom de la catégorie et s'appellera name.</br>
                 C'est au troisième et quatrième champs que cela va changer.</br>
-                Nous allons créer un champ qui sera le bord gauche, il se nommera lft.</br>
-                Et un autre champ qui sera le bord droit, il se nommera rght (lft et rght comme sur les
+                - Nous allons créer un champ qui sera le bord gauche, il se nommera lft.</br>
+                - Et un autre champ qui sera le bord droit, il se nommera rght (lft et rght comme sur les
                 frameworks).</br>
-                Le cinquième champ nous laisserons parent_id tout simplement au cas où nous aurions un problème avec
-                des UPDATE ou des INSERT, cela permettra de reconstruire l'intégrité notre arbre en utilisant
-                directement ce champ.
+                - Pour le cinquième champ nous laisserons parent_id tout simplement au cas où nous aurions un problème
+                avec des UPDATE ou des INSERT, cela permettra de reconstruire l'intégrité de notre arbre en utilisant
+                directement ce champ.</br>
+                </br>
+                Champs de catégories_interval :
             </p>
 
             <figure class="flex justify-center w-100 my-1">
@@ -190,28 +214,51 @@
                     alt="Croquis de l'organisation des catégories">
             </figure>
 
-            <p class="text my-2 p-1">
-                Nous pouvons maintenant insérer <span class="red-text">Blog</span>.</br>
+            <p class="text my-2 p-1-limit">
+                Nous pouvons maintenant insérer <span class="red-text">Blog</span> dans notre table
+                categories_interval.</br>
+                </br>
                 Dans le champ name nous mettons donc Blog.</br>
-                Ensuite on met le bord gauche à 1 et le bord droit à 4, c'est la règle le bord droit doit toujours être
-                supérieur au bord gauche.
-                Nous mettons la valeur 4 pour que <span class="red-text">Blog</span> puisse englober une sous-catégorie
+                Ensuite on met le bord gauche à 1 et le bord droit à 4, c'est la règle, le bord droit doit toujours être
+                supérieur au bord gauche.</br>
+                Nous mettons la valeur 4 pour que la catégorie <span class="red-text">Blog</span> puisse englober une
+                sous-catégorie
                 avec un intervalle de 2 et 3.</br>
                 Si on voulait mettre une autre sous-catégorie il faudrait augmenter l'intervalle de <span
                     class="red-text">Blog</span> de +2 même chose si cette sous-catégorie à un enfant, pour faire simple
                 chaque fois qu'on ajoute une sous-catégorie ou un enfant à <span class="red-text">Blog</span> il faut
                 ajouter +2 à son intervalle.</br>
                 Pour le champ parent_id comme c'est la catégorie racine se sera 0.</br>
+                </br>
+                Insertion de <span class="red-text">Blog</span> dans categories_interval:
             </p>
 
-            <p class="text mb-2 p-1">
-                Si on veut créer une sous-catégorie de <span class="red-text">Blog</span>.</br>
+            <figure class="flex justify-center w-100 my-1">
+                <img class="img1 w-60-limit" src="images/Capture d’écran 2022-07-17 103208.png"
+                    alt="Croquis de l'organisation des catégories">
+            </figure>
+
+            <p class="text my-2 p-1-limit">
+                Si on veut créer une sous-catégorie de <span class="red-text">Blog</span>, on l'insère aussi dans notre
+                table.</br>
+                </br>
                 On met son nom, ici <span class="blue-text">Graphisme</span>.</br>
                 Ensuite il faut que son bord gauche soit supérieur au bord gauche de <span class="red-text">Blog</span>,
                 nous mettons 2.</br>
                 Son bord droit quand à lui doit être supérieur à son bord gauche mais inférieur au bord droit de <span
                     class="red-text">Blog</span>.</br>
-                Pour le champ parent_id inutile de préciser, cela se fera automatiquement.
+                Pour le champ parent_id inutile de le préciser, cela se fera automatiquement.</br>
+                </br>
+                Insertion de <span class="blue-text">Graphisme</span> dans categories_interval:
+            </p>
+
+            <figure class="flex justify-center w-100 my-1">
+                <img class="img1 w-60-limit" src="images/Capture d’écran 2022-07-17 104308.png"
+                    alt="Croquis de l'organisation des catégories">
+            </figure>
+
+            <p class="text my-2 p-1-limit">
+                Nous obtenons cette table :
             </p>
 
             <figure class="w-100">
@@ -219,7 +266,7 @@
                     alt="Croquis de l'organisation des catégories">
             </figure>
 
-            <p class="text my-2 p-1">
+            <p class="text my-2 p-1-limit">
                 Nous n'allons pas faire tout l'arbre, mais c'est toujours le même principe que l'exemple ci-dessus.</br>
                 A la fin vous aurez une grosse table qui ressemblera à ça :
             </p>
@@ -229,14 +276,118 @@
                     alt="Croquis de l'organisation des catégories">
             </figure>
 
-            <p class="text my-2 p-1">
+            <p class="text my-2 p-1-limit">
                 On pourrait se dire que c'est vraiment compliqué, pourquoi le faire ?</br>
                 Nous allons voir maintenant pourquoi.</br>
-                Imaginons que l'on souhaite récupérer tous les parents de la catégorie <span
-                    class="violet-text">2D</span>
+                </br>
+                Imaginons en reprenant l'exemple plus haut, que l'on souhaite récupérer tous les parents de la catégorie
+                <span class="violet-text">2D</span>.</br>
+                On commence par récupérer notre catégorie <span class="violet-text">2D</span> puisqu'on sait que cette
+                catégorie à l'id 5.</br>
+                SELECT * FROM `categories_interval` WHERE id = 5;</br>
+                </br>
+                On se retrouve avec ce résultat :
             </p>
 
+            <figure class="w-100">
+                <img class="img1 w-30-limit" src="images/Capture d’écran 2022-07-17 095507.png"
+                    alt="Croquis de l'organisation des catégories">
+            </figure>
+
+            <p class="text my-2 p-1-limit">
+                Les parents de la catégorie <span class="violet-text">2D</span> sont les parents qui englobent son
+                intervalle de 3 et 4.</br>
+                Ce qui veut dire que les parents de la catégorie <span class="violet-text">2D</span> ont un bord gauche
+                inférieur à 3 et un bord droit supérieur à 4.</br>
+                </br>
+                Sachant cela, il suffit de faire une requête en précisant que lft est inférieur à 3 et rght est
+                supérieur à 4 de cette manière :</br>
+                SELECT * FROM `categories_interval` WHERE lft &lt; 3 AND rght &gt; 4;</br>
+                </br>
+                On se retrouve avec ce résultat :
+            </p>
+
+            <figure class="w-100">
+                <img class="img1 w-30-limit" src="images/Capture d’écran 2022-07-17 154814.png"
+                    alt="Croquis de l'organisation des catégories">
+            </figure>
+
+            <p class="text my-2 p-1-limit">
+                On voit que l'on a récupéré tout les parents.</br>
+                </br>
+                Si on modifie la requête de cette façon :</br>
+                SELECT * FROM `categories_interval` WHERE lft &lt;= 3 AND rght &gt;= 4;</br>
+                </br>
+                On récupère les parents et en plus la catégorie courante :
+            </p>
+
+            <figure class="w-100">
+                <img class="img1 w-30-limit" src="images/Capture d’écran 2022-07-17 155741.png"
+                    alt="Croquis de l'organisation des catégories">
+            </figure>
+
+            <p class="text my-2 p-1-limit">
+                On peut organiser le résultat en mettant un ORDER BY lft ASC, pour avoir les parents en haut et les
+                enfants en bas (ou l'inverse avec DESC), sur cet exemple ce n'est pas nécessaire puisqu'on les a
+                enregistré dans le bon ordre.</br>
+                Cela peut être très utile si par exemple on veut faire un fil d'Ariane.</br>
+                </br>
+                Imaginons maintenant que nous voulons connaître toutes les sous-catégories de <span
+                    class="red-text">Blog</span>.</br>
+                Et bien il faudra simplement prendre toutes les catégories qui ont un intervalle compris entre 1 et 20
+                de cette manière.</br>
+                SELECT * FROM `categories_interval` WHERE lft &gt; 1 AND rght &lt; 20;</br>
+                </br>
+                Résultat :
+            </p>
+
+            <figure class="flex justify-center w-100">
+                <img class="img1 w-50-limit" src="images/Capture d’écran 2022-07-17 173641.png"
+                    alt="Croquis de l'organisation des catégories">
+            </figure>
+
+            <p class="text my-2 p-1-limit">
+                Nous avons bien récupéré toutes les sous-catégories de <span class="red-text">Blog</span>.</br>
+                D'abord les sous-catégories <span class="blue-text">Graphisme</span>, <span class="blue-text">Music</span> et <span class="blue-text">Developpement</span> puis ensuite tous leurs enfants.</br>
+                </br>
+                Maintenant nous allons récupérer seulement les enfants des sous-catégories, les feuilles de l'arbre.</br>
+                En regardant les feuilles de l'arbre du croquis on voit que si nous soustrayons le bord gauche au bord droit, nous avons systématiquement comme résultat 1.</br> 
+                Nous rajoutons donc à la requête cette condition.</br>
+                SELECT * FROM `categories_interval` WHERE lft &gt; 1 AND rght &lt; 20 AND rght-lft = 1;</br>
+                </br>
+                Résultat :
+            </p>
+
+            <figure class="flex justify-center w-100">
+                <img class="img1 w-50-limit" src="images/Capture d’écran 2022-07-17 181630.png"
+                    alt="Croquis de l'organisation des catégories">
+            </figure>
+
         </section>
+
+
+
+
+
+        <!-- TEST -->
+        <div class="container flex justify-center w-100 my-2">
+            <div class="box flex centerAll">Test texte Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                Obcaecati exercitationem quos facere deserunt repellendus, nemo corrupti asperiores fugit quod
+                perferendis possimus aspernatur omnis velit itaque eaque saepe cupiditate esse ducimus, sequi fuga sunt
+                quis voluptate. Fugit iste ab voluptatibus quisquam blanditiis, optio nulla tempora praesentium sequi
+                dignissimos a corporis temporibus neque ex assumenda, magni, ullam iure mollitia vero cumque? Molestias,
+                obcaecati sed officiis suscipit porro nihil ad qui corrupti iure! Odio vero optio laboriosam, culpa ex
+                sequi ducimus voluptatum quia neque ipsam architecto qui voluptatibus necessitatibus ab quos beatae
+                officia aperiam dicta voluptas quas quaerat illo eligendi cumque! Expedita iste dolores reprehenderit
+                repudiandae culpa mollitia quos nostrum accusamus quasi beatae sed debitis nihil quis aspernatur eius
+                ipsa aliquam soluta quidem possimus, alias et, obcaecati quam! Minima aliquam adipisci qui!
+                Exercitationem neque rerum sint ea delectus ipsam facilis totam deleniti veritatis nemo quod omnis
+                asperiores perferendis assumenda cumque porro, soluta tempore maiores debitis laudantium eaque. Autem
+                hic neque nisi incidunt fugit molestias aliquid quae sit voluptates! Ad nemo inventore officia natus rem
+                nisi quod adipisci deleniti. Molestiae natus perspiciatis incidunt temporibus reiciendis deserunt odit,
+                nisi eligendi aliquid ducimus quod obcaecati quas doloribus explicabo in. Voluptate, natus eaque
+                reprehenderit ab quos nostrum!</div>
+        </div>
     </main>
 </body>
 

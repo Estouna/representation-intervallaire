@@ -28,7 +28,7 @@
     --red: rgb(255, 95, 95);
     --blue: rgb(111, 162, 255);
     --yellow: rgb(255, 202, 58);
-    --violet: rgb(141, 0, 197);
+    --violet: rgb(189, 31, 252);
 
     /* --------------- COLORS ----------------- */
     --font-poppLight200: 'Poppins', arial, sans-serif;
@@ -94,7 +94,7 @@
     ------------ TOP ------------ 
 */
 .mt-1 {margin-top: 1em;}
-.mt-2 {margin-top: 2em;}
+.mt-2 {margin-top: 3em;}
 .mt-3 {margin-top: 3em;}
 .mt-4 {margin-top: 4em;}
 .mt-5 {margin-top: 5em;}
@@ -238,9 +238,93 @@
 .px-6 {padding-right: 6em;padding-left: 6em;}
 .px-7 {padding-right: 7em;padding-left: 7em;}
 
+/*
+    ----------------------------------------------------------- PADDING LIMIT (SMARTPHONE) -----------------------------------------------------------
+*/
+
+/*
+    ------------ ALL ------------ 
+*/
+.p-1-limit {padding: max(1%, 11px);}
+.p-2-limit {padding: max(2%, 12px);}
+.p-3-limit {padding: max(3%, 13px);}
+.p-4-limit {padding: max(4%, 14px);}
+.p-5-limit {padding: max(5%, 15px);}
+.p-6-limit {padding: max(6%, 16px);}
+.p-7-limit {padding: max(7%, 17px);}
+
+/*
+    ------------ TOP ------------ 
+*/
+.pt-1-limit {padding-top: max(1%, 11px);}
+.pt-2-limit {padding-top: max(2%, 12px);}
+.pt-3-limit {padding-top: max(3%, 13px);}
+.pt-4-limit {padding-top: max(4%, 14px);}
+.pt-5-limit {padding-top: max(5%, 15px);}
+.pt-6-limit {padding-top: max(6%, 16px);}
+.pt-7-limit {padding-top: max(7%, 17px);}
+
+/*
+    ------------ BOTTOM ------------ 
+*/
+.pb-1-limit {padding-bottom: max(1%, 11px);}
+.pb-2-limit {padding-bottom: max(2%, 12px);}
+.pb-3-limit {padding-bottom: max(3%, 13px);}
+.pb-4-limit {padding-bottom: max(4%, 14px);}
+.pb-5-limit {padding-bottom: max(5%, 15px);}
+.pb-6-limit {padding-bottom: max(6%, 16px);}
+.pb-7-limit {padding-bottom: max(7%, 17px);}
+
+/*
+    ------------ LEFT ------------ 
+*/
+.pl-1-limit {padding-left: max(1%, 11px);}
+.pl-2-limit {padding-left: max(2%, 12px);}
+.pl-3-limit {padding-left: max(3%, 13px);}
+.pl-4-limit {padding-left: max(4%, 14px);}
+.pl-5-limit {padding-left: max(5%, 15px);}
+.pl-6-limit {padding-left: max(6%, 16px);}
+.pl-7-limit {padding-left: max(7%, 17px);}
+
+/*
+    ------------ RIGHT ------------ 
+*/
+.pr-1-limit {padding-right: max(1%, 11px);}
+.pr-2-limit {padding-right: max(2%, 12px);}
+.pr-3-limit {padding-right: max(3%, 13px);}
+.pr-4-limit {padding-right: max(4%, 14px);}
+.pr-5-limit {padding-right: max(5%, 15px);}
+.pr-6-limit {padding-right: max(6%, 16px);}
+.pr-7-limit {padding-right: max(7%, 17px);}
+
+/*
+    ------------ TOP AND BOTTOM (Y) ------------ 
+*/
+.py-1-limit {padding-top: max(1%, 11px);padding-bottom: max(1%, 11px);}
+.py-2-limit {padding-top: max(2%, 12px);padding-bottom: max(2%, 12px);}
+.py-3-limit {padding-top: max(3%, 13px);padding-bottom: max(3%, 13px);}
+.py-4-limit {padding-top: max(4%, 14px);padding-bottom: max(4%, 14px);}
+.py-5-limit {padding-top: max(5%, 15px);padding-bottom: max(5%, 15px);}
+.py-6-limit {padding-top: max(6%, 16px);padding-bottom: max(6%, 16px);}
+.py-7-limit {padding-top: max(7%, 17px);padding-bottom: max(7%, 17px);}
+
+/*
+    ------------ RIGHT AND LEFT (X) ------------ 
+*/
+.px-1-limit {padding-right: max(1%, 11px);padding-left: max(1%, 11px);}
+.px-2-limit {padding-right: max(2%, 12px);padding-left: max(2%, 12px);}
+.px-3-limit {padding-right: max(3%, 13px);padding-left: max(3%, 13px);}
+.px-4-limit {padding-right: max(4%, 14px);padding-left: max(4%, 14px);}
+.px-5-limit {padding-right: max(5%, 15px);padding-left: max(5%, 15px);}
+.px-6-limit {padding-right: max(6%, 16px);padding-left: max(6%, 16px);}
+.px-7-limit {padding-right: max(7%, 17px);padding-left: max(7%, 17px);}
+
 
 /*
     ----------------------------------------------------------- TEXT -----------------------------------------------------------
+*/
+/*
+    ------------ FONT-SIZE ------------ 
 */
 .fs-1 {font-size: max(3vw, 26px);}
 .fs-2 {font-size: max(2.5vw, 22px);}
@@ -323,7 +407,7 @@
 .w-20-limit{width: max(20%, 200px);}
 .w-30-limit{width: max(30%, 200px);}
 .w-40-limit{width: max(40%, 200px);}
-.w-50-limit{width: max(50%, 200px);}
+.w-50-limit{width: max(50%, 300px);}
 .w-60-limit{width: max(60%, 300px);}
 .w-70-limit{width: max(70%, 315px);}
 .w-80-limit{width: max(80%, 315px);}
@@ -340,3 +424,24 @@
 .vw-80-limit{width: max(80vw, 315px);}
 .vw-90-limit{width: max(90vw, 315px);}
 .vw-100-limit{width: max(100vw, 315px);}
+
+
+/*
+    ----------------------------------------------------------- BORDER-RADIUS -----------------------------------------------------------
+*/
+.rounded-0{border-radius: 0;}
+.rounded-1{border-radius: 0.3em;}
+.rounded-2{border-radius: 0.6em;}
+.rounded-3{border-radius: 0.9em;}
+.rounded-4{border-radius: 1.2em;}
+.rounded-5{border-radius: 1.5em;}
+.rounded-6{border-radius: 1.8em;}
+.rounded-8{border-radius: 2.4em;}
+.rounded-9{border-radius: 3em;}
+.rounded-10{border-radius: 3.6em;}
+.rounded-11{border-radius: 4.2em;}
+.rounded-12{border-radius: 4.8em;}
+.rounded-13{border-radius: 5.4em;}
+.rounded-14{border-radius: 6em;}
+
+.rounded-circle{border-radius: 50%}
