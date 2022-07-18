@@ -15,8 +15,31 @@
 
 <body class="body">
     <main class="column centerAll">
+
+        <!-- ____________________ PANEL BURGER ____________________ -->
+        <div class="btn unselectable">
+            <div class="spin-container">
+                <div class="front">
+                    <div class="croquis b1">Croquis</div>
+                </div>
+                <div class="back">
+                    <div class="barSpin b2 b-back"></div>
+                    <div class="barSpin b3 b-back"></div>
+                </div>
+            </div>
+        </div>
+        <div id="panel" class="flex centerAll">
+
+            <figure class="img-container flex justify-center">
+                <img class="imgBurger" src="images/Capture d’écran 2022-07-15 102736.png"
+                    alt="Croquis de l'organisation des catégories">
+            </figure>
+
+        </div>
+
         <h1 class="h1 fs-4 mt-2 p-1-limit">La représentation intervallaire</h1>
         <section class="section column w-70-limit my-4 p-1-limit rounded-3">
+
 
             <p class="text my-2 p-1-limit">
                 La représentation intervallaire est un système qui va permettre au sein d'une table de stocker
@@ -29,15 +52,20 @@
             </figure>
 
             <p class="text my-2 p-1-limit">
-                Le croquis ci-dessus montre un exemple concret, celui d'un site.</br>
+                Le croquis ci-dessus montre un exemple concret, celui d'un site (vous pouvez accèder à ce croquis en
+                cliquant sur le bouton en haut à droite).</br>
                 </br>
                 En effet sur ce site on trouve des catégories qui ont des sous-catégories et ces sous-catégories ont
                 elles-mêmes des
                 sous-catégories et ainsi de suite jusqu'a l'infini.</br>
-                Comment stocker ça sur une base de données ?</br>
+                Comment stocker ça sur une base de données ?
+            </p>
+
+            <h2 class="h2 fs-5 text-center my-2">Système avec un parent_id</h2>
+
+            <p class="text my-2 p-1-limit">
                 La première solution qui paraît la plus naturelle est de mettre un parent_id, nous allons voir les
                 défauts de ce système.</br>
-                </br>
                 Table avec parent_id :
             </p>
 
@@ -143,12 +171,12 @@
             <p class="text my-2 p-1-limit">
                 En faisant cela nous avons les sous-catégories, mais rien ne nous dit que nous sommes en bout de chaîne,
                 ces enfants pourraient aussi avoir des sous-catégories...</br>
-                </br>
                 Donc on voit que c'est problématique, on est obligé de faire plusieurs requêtes, alors qu'on pourrait le
                 faire en une seule requête.</br>
                 C'est là que la représentation intervallaire entre en jeu.
             </p>
 
+            <h2 class="h2 fs-5 text-center my-2">Système intervallaire</h2>
 
             <p class="text my-2 p-1-limit">
                 La représentation intervallaire est un peu compliquée à expliquer, je vais essayer d'être le plus clair
@@ -158,18 +186,11 @@
                 intervalle (d'où le nom).</br>
                 Le principe c'est d'avoir un intervalle qui est défini par un bord gauche et par un bord droit pour
                 chaque catégorie ou sous-catégorie, ce bord gauche et ce bord droit vont permettre de faire des requêtes
-                plus complexes.</br>
-                </br>
-                Croquis du site :
+                plus complexes.
             </p>
 
-            <figure class="flex justify-center w-100 my-1">
-                <img class="img1 w-60-limit" src="images/Capture d’écran 2022-07-15 102736.png"
-                    alt="Croquis de l'organisation des catégories">
-            </figure>
-
             <p class="text my-2 p-1-limit">
-                L'exemple du croquis nous indique que :</br>
+                Le croquis du site nous indique que (bouton en haut à droite) : </br>
                 </br>
                 - La catégorie <span class="red-text">Blog</span> à un bord gauche à 1 et un bord droit à 20, nous avons
                 donc un intervalle de 1 à 20.</br>
@@ -246,8 +267,8 @@
                 Ensuite il faut que son bord gauche soit supérieur au bord gauche de <span class="red-text">Blog</span>,
                 nous mettons 2.</br>
                 Son bord droit quand à lui doit être supérieur à son bord gauche mais inférieur au bord droit de <span
-                    class="red-text">Blog</span>.</br>
-                Pour le champ parent_id inutile de le préciser, cela se fera automatiquement.</br>
+                    class="red-text">Blog</span>, nous mettons donc 3.</br>
+                Pour le champ parent_id nous mettons 1, l'id de <span class="red-text">Blog</span>.</br>
                 </br>
                 Insertion de <span class="blue-text">Graphisme</span> dans categories_interval:
             </p>
@@ -309,7 +330,7 @@
 
             <figure class="w-100">
                 <img class="img1 w-30-limit" src="images/Capture d’écran 2022-07-17 154814.png"
-                    alt="Croquis de l'organisation des catégories">
+                    alt="Résultat de la requête">
             </figure>
 
             <p class="text my-2 p-1-limit">
@@ -323,7 +344,7 @@
 
             <figure class="w-100">
                 <img class="img1 w-30-limit" src="images/Capture d’écran 2022-07-17 155741.png"
-                    alt="Croquis de l'organisation des catégories">
+                    alt="Résultat de la requête">
             </figure>
 
             <p class="text my-2 p-1-limit">
@@ -343,16 +364,20 @@
 
             <figure class="flex justify-center w-100">
                 <img class="img1 w-50-limit" src="images/Capture d’écran 2022-07-17 173641.png"
-                    alt="Croquis de l'organisation des catégories">
+                    alt="Résultat de la requête">
             </figure>
 
             <p class="text my-2 p-1-limit">
                 Nous avons bien récupéré toutes les sous-catégories de <span class="red-text">Blog</span>.</br>
-                D'abord les sous-catégories <span class="blue-text">Graphisme</span>, <span class="blue-text">Music</span> et <span class="blue-text">Developpement</span> puis ensuite tous leurs enfants.</br>
+                D'abord les sous-catégories <span class="blue-text">Graphisme</span>, <span
+                    class="blue-text">Music</span> et <span class="blue-text">Developpement</span> puis ensuite tous
+                leurs enfants.</br>
                 </br>
-                Maintenant nous allons récupérer seulement les enfants des sous-catégories, les feuilles de l'arbre.</br>
-                En regardant les feuilles de l'arbre du croquis on voit que si nous soustrayons le bord gauche au bord droit, nous avons systématiquement comme résultat 1.</br> 
-                Nous rajoutons donc à la requête cette condition.</br>
+                Maintenant nous allons récupérer seulement les enfants des sous-catégories, les feuilles de
+                l'arbre.</br>
+                En regardant les feuilles de l'arbre du croquis on voit que si nous soustrayons le bord gauche au bord
+                droit, nous avons systématiquement comme résultat 1.</br>
+                Nous rajoutons donc cette condition à la requête.</br>
                 SELECT * FROM `categories_interval` WHERE lft &gt; 1 AND rght &lt; 20 AND rght-lft = 1;</br>
                 </br>
                 Résultat :
@@ -360,8 +385,64 @@
 
             <figure class="flex justify-center w-100">
                 <img class="img1 w-50-limit" src="images/Capture d’écran 2022-07-17 181630.png"
-                    alt="Croquis de l'organisation des catégories">
+                    alt="Résultat de la requête">
             </figure>
+
+            <p class="text my-2 p-1-limit">
+                Nous avons bien récupéré les enfants de l'arbre, mais cette fois seulement les feuilles, le bout de
+                l'arborescence. Donc c'est pluôt pratique.
+            </p>
+
+            <p class="text my-2 p-1-limit">
+                En revanche, ce système à un petit inconvénient (ou un gros inconvénient ^^) l'insertion est un peu plus
+                complexe que d'habitude.</br>
+                Imaginons qu'on veuille rajouter une catégorie dans <span class="red-text">Blog</span>, comment ça se
+                passe ?</br>
+                (Si vous ne voulez pas avoir la migraine pendant les explications, affichez le croquis avec le boutons
+                en haut à droite ^^)</br>
+                </br>
+                A chaque fois qu'on va rajouter une catégorie ou des éléments, cela va se passer en deux temps. </br>
+                D'abord il va falloir déplacer et bouger les intervalles et ensuite insérer notre valeur, comment faire
+                ça ?</br>
+                Nous allons rajouter à droite de <span class="blue-text">Developpement</span> une nouvelle catégorie
+                que l'on appellera <span class="blue-text">Vidéo</span>.</br>
+                On voit que le bord droit de <span class="blue-text">Developpement</span> s'arrête à 19.</br>
+                Notre bord gauche commencera donc à 20 et nous mettrons le bord droit à 21 (on aurait pu mettre plus si
+                la catégorie vidéo avait des sous-catégories mais pour l'exemple elle n'en n'aura pas).</br>
+                En regardant le croquis on voit que notre nouvelle catégorie entre en conflit avec l'arborescence de
+                <span class="green-text">Portfolio</span> qu'il va falloir modifier l'intervalle de <span
+                    class="red-text">Blog</span> et aussi celui de <span class="green-text">Portfolio</span>. Cela à
+                l'air très compliqué mais c'est relativement simple.</br>
+                </br>
+                Nous allons d'abord faire une requête UPDATE qui va ajouter +2 au bord droit de toutes les catégories
+                qui ont un bord droit supérieur à 19.</br>
+                UPDATE `categories_interval` SET rght = rght + 2 WHERE rght > 19</br>
+                Ensuite nous faisons exactement la même chose mais pour le bord gauche cette fois.</br>
+                UPDATE `categories_interval` SET lft = lft + 2 WHERE lft > 19</br>
+                Donc tous les bords supérieurs à 19 ont été augmentés de 2.</br>
+                </br>
+                Maintenant que nous avons fait ça, nous insérons notre catégorie :
+            </p>
+
+            <figure class="flex justify-center w-100">
+                <img class="img1 w-50-limit" src="images/Capture d’écran 2022-07-18 170214.png"
+                    alt="Insertion de la catégorie vidéo">
+            </figure>
+
+            <p class="text my-2 p-1-limit">
+                Ensuite si nous regardons notre table on voit qu'en ayant décaler les intervalles supérieurs à 19 de 2, notre nouvelle catégorie <span class="blue-text">Vidéo</span> n'entre en conflit avec aucunes autres.
+            </p>
+
+            <figure class="flex justify-center w-100">
+                <img class="img1 w-50-limit" src="images/Capture d’écran 2022-07-18 174223.png"
+                    alt="Insertion de la catégorie vidéo">
+            </figure>
+
+            <p class="text my-2 p-1-limit">
+                Continuons, imaginons que plus tard nous ayons besoin de rajouter des sous-catégories à la catégorie <span class="blue-text">Vidéo</span>, et bien cela va se faire un peu de la même façon.</br>
+                Nous ajoutons d'abord 2 à tous les bords droit mais cette fois supérieur à 20
+            </p>
+
 
         </section>
 
@@ -389,6 +470,7 @@
                 reprehenderit ab quos nostrum!</div>
         </div>
     </main>
+    <script src="js/burger.js"></script>
 </body>
 
 </html>

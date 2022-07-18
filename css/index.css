@@ -9,19 +9,29 @@
     border-radius: 1.8em 0 1.8em 0;
 }
 
-.section, .h1 {
+.h2{
+    font-family: var(--font-poppLight200);
+    color: var(--yellow);
+    background-color: var(--darkGrey);
+    border-radius: 10px;
+    letter-spacing: 1px;
+    border-radius: 1.8em 0 1.8em 0;
+}
+
+.section, 
+.h1 {
     background-color: rgba(0, 0, 0, 0.555);
     box-shadow: 10px 10px 15px var(--black),
         inset 0 0 0.16em 0.08em rgba(255, 202, 58, 0.842);
     outline: 1px solid var(--yellow);
+    color: var(--text-white);
 }
 
 .text {
     font-family: var(--font-roboLight300);
-    font-size: max(0.8vw, 12px);
-    color: var(--white);
+    font-size: max(0.9vw, 12px);
     letter-spacing: 1px;
-    line-height: 2em;
+    line-height: 2.5em;
     background-color: var(--darkGrey);
     outline: 1px solid var(--yellow);
     box-shadow: inset 0 0 1em 0.40em var(--black);
@@ -34,11 +44,146 @@
 .green-text {color: var(--green-text);}
 
 .img1 {
-    box-shadow: 0 0 10px 2px var(--white);
+    box-shadow: 0 0 5px 1px var(--white);
     border-radius: 5px;
 }
 
-/*TEST*/
+/*
+    ----------------------------------------------------------- MENU BURGER -----------------------------------------------------------
+*/
+
+/* 
+    ------------- BUTTON -------------
+*/
+.btn {
+    background: transparent;
+    position: fixed;
+    top: 5px;
+    right: 10px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+    z-index: 2;
+}
+
+.spin-container {
+    width: 60px;
+    height: 25px;
+    position: relative;
+    transition: transform 0.5s ease-in-out;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.spin-container.active {
+    transform: rotateY(180deg);
+}
+
+.front,
+.back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    perspective: 1500px;
+    transform-style: preserve-3d;
+    border-radius: 5px;
+}
+
+.front {
+    background-color: var(--black);
+    border: 1px solid var(--yellow);
+}
+
+.back {
+    background-color: var(--red);
+    border: 1px solid var(--white);
+    transform: rotateY(180deg);
+}
+
+.croquis {
+    color: var(--text-white);
+    font-size: 85%;
+    transition: 0.5s;
+}
+
+.croquis:hover {
+    color: var(--text-yellow);
+}
+
+.barSpin {
+    width: 30%;
+    height: 2px;
+    background: var(--white);
+    border-radius: 10px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+}
+
+.croquis,
+.barspin {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+}
+
+.b1 {
+    transform: translate(-50%, -9px) translateZ(20px);
+}
+
+.b2.b-back {
+    transform: translate(-50%, -1px) translateZ(20px) rotate(45deg);
+}
+
+.b3.b-back {
+    transform: translate(-50%, -1px) translateZ(20px) rotate(-45deg);
+}
+
+/* 
+    ------------- PANEL -------------
+*/
+#panel {
+    position: fixed;
+    top: 30px;
+    right: -8px;
+    width: max(50vw, 325px);
+    /*passe le menu hors écran sur la droite*/
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    background-color: rgba(0, 0, 0, 0.541);
+    border-radius: 10px;
+    z-index: 1;
+}
+
+#panel.active {
+    transform: translateX(-5px);
+}
+
+.imgBurger {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.img-container {
+    margin: 5px;
+}
+
+/*
+    ----------------------------------------------------------- MEDIAQUERIES -----------------------------------------------------------
+*/
+
+@media only screen and (orientation: landscape) and (max-height: 600px) {
+    #panel {
+        width: 100%;
+    }
+}
+
+
+
+/* 
+    ------------- TEST -------------
+*/
 .container {
     width: 100%;
     font-family: var(--font-roboLight300);
