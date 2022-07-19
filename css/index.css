@@ -18,6 +18,10 @@
     border-radius: 1.8em 0 1.8em 0;
 }
 
+a{
+    color: var(--text-blue);
+}
+
 .section, 
 .h1 {
     background-color: rgba(0, 0, 0, 0.555);
@@ -41,7 +45,7 @@
 .red-text {color: var(--red);}
 .blue-text {color: var(--blue);}
 .violet-text {color: var(--violet);}
-.green-text {color: var(--green-text);}
+.green-text {color: var(--text-green2);}
 
 .img1 {
     box-shadow: 0 0 5px 1px var(--white);
@@ -62,7 +66,7 @@
     right: 10px;
     border: none;
     cursor: pointer;
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.5s ease-in-out;
     z-index: 2;
 }
 
@@ -150,7 +154,7 @@
     width: max(50vw, 325px);
     /*passe le menu hors écran sur la droite*/
     transform: translateX(100%);
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.5s ease-in-out;
     background-color: rgba(0, 0, 0, 0.541);
     border-radius: 10px;
     z-index: 1;

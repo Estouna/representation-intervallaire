@@ -416,9 +416,9 @@
                 </br>
                 Nous allons d'abord faire une requête UPDATE qui va ajouter +2 au bord droit de toutes les catégories
                 qui ont un bord droit supérieur à 19.</br>
-                UPDATE `categories_interval` SET rght = rght + 2 WHERE rght > 19</br>
+                UPDATE `categories_interval` SET rght = rght + 2 WHERE rght &gt; 19</br>
                 Ensuite nous faisons exactement la même chose mais pour le bord gauche cette fois.</br>
-                UPDATE `categories_interval` SET lft = lft + 2 WHERE lft > 19</br>
+                UPDATE `categories_interval` SET lft = lft + 2 WHERE lft &gt; 19</br>
                 Donc tous les bords supérieurs à 19 ont été augmentés de 2.</br>
                 </br>
                 Maintenant que nous avons fait ça, nous insérons notre catégorie :
@@ -430,17 +430,85 @@
             </figure>
 
             <p class="text my-2 p-1-limit">
-                Ensuite si nous regardons notre table on voit qu'en ayant décaler les intervalles supérieurs à 19 de 2, notre nouvelle catégorie <span class="blue-text">Vidéo</span> n'entre en conflit avec aucunes autres.
+                Ensuite si nous regardons notre table on voit qu'en ayant décaler les intervalles supérieurs à 19 de 2,
+                notre nouvelle catégorie <span class="blue-text">Vidéo</span> n'entre en conflit avec aucunes autres.
             </p>
 
             <figure class="flex justify-center w-100">
                 <img class="img1 w-50-limit" src="images/Capture d’écran 2022-07-18 174223.png"
+                    alt="Résultat de la requête">
+            </figure>
+
+            <p class="text my-2 p-1-limit">
+                Continuons, imaginons que plus tard nous ayons besoin de rajouter des sous-catégories à la catégorie
+                <span class="blue-text">Vidéo</span>, et bien cela va se faire un peu de la même façon.</br>
+                Nous ajoutons d'abord + 2 à tous les bords droit mais cette fois supérieur à 20.</br>
+                UPDATE `categories_interval` SET rght = rght + 2 WHERE rght &gt; 20</br>
+                Nous ajoutons ensuite + 2 à tous les bords gauche supérieur à 20.</br>
+                UPDATE `categories_interval` SET lft = lft + 2 WHERE lft &gt; 20</br>
+            </p>
+
+            <figure class="flex justify-center w-100">
+                <img class="img1 w-50-limit" src="images/Capture d’écran 2022-07-19 141705.png"
+                    alt="Résultat de la requête">
+            </figure>
+
+            <p class="text my-2 p-1-limit">
+                Nous voyons que la catégorie <span class="blue-text">Vidéo</span> à maintenant un intervalle de 20 et
+                23, donc qu'elle peut maintenant accueillir un enfant.</br>
+                Les autres catégories on bien été modifiées aussi, il n'y a pas de conflit.</br>
+                Maintenant nous pouvons insérer notre nouvelle sous-catégorie de <span class="blue-text">Vidéo</span>
+                que nous appellerons <span class="violet-text">Action</span>.</br>
+                Son intervalle doit être englobé par celui de <span class="blue-text">Vidéo</span> qui est de 20 et 23,
+                donc nous mettons 21 et 22.</br>
+                Pour le parent_id c'est l'id de la catégorie <span class="blue-text">Vidéo</span> qui est 14.
+            </p>
+
+            <figure class="flex justify-center w-100">
+                <img class="img1 w-50-limit" src="images/Capture d’écran 2022-07-19 143404.png"
                     alt="Insertion de la catégorie vidéo">
             </figure>
 
             <p class="text my-2 p-1-limit">
-                Continuons, imaginons que plus tard nous ayons besoin de rajouter des sous-catégories à la catégorie <span class="blue-text">Vidéo</span>, et bien cela va se faire un peu de la même façon.</br>
-                Nous ajoutons d'abord 2 à tous les bords droit mais cette fois supérieur à 20
+                Nous aurons besoin aussi de pouvoir supprimer un élément, nous allons voir comment faire.</br>
+                Pour supprimer la catégorie <span class="violet-text">Action</span>, nous allons encore décaler les
+                bords.
+                Cette fois nous n'ajouterons pas + 2, nous enleverons - 2 à tous les bords supérieurs à 21 qui est le
+                bord gauche de la catégorie <span class="violet-text">Action</span>.</br>
+                Nous enlevons d'abord - 2 à tous les bords droit supérieur à 21.</br>
+                UPDATE `categories_interval` SET rght = rght - 2 WHERE rght &gt; 21</br>
+                Nous enlevons ensuite - 2 à tous les bords gauche supérieur à 21.</br>
+                UPDATE `categories_interval` SET lft = lft - 2 WHERE lft &gt; 21</br>
+                Ensuite on retourne sur notre table et on supprime la catégorie <span class="violet-text">Action</span>,
+                nous avons maintenant exactement la même table qu'avant l'insertion de la catégorie <span
+                    class="violet-text">Action</span>.
+            </p>
+
+            <figure class="flex justify-center w-100">
+                <img class="img1 w-50-limit" src="images/Capture d’écran 2022-07-18 174223.png"
+                    alt="Résultat de la requête">
+            </figure>
+
+            <p class="text my-2 p-1-limit">
+                A TESTER PAS EXPLIQUER DANS LE TUTO (je suppute que ça doit marcher ^^)</br>
+                </br>
+                Si je veux supprimer <span class="red-text">Blog</span> et tous ces enfants, il faut que je compte le
+                nombre de catégories, il y en a 11 que je multiplie par 2 puisque on rajoute + 2 pour chaque catégorie,
+                j'obtiens 22.</br>
+                J'enlève d'abord - 22 à tous les bords droit supérieur à 0.</br>
+                UPDATE `categories_interval` SET rght = rght - 22 WHERE rght &gt; 0</br>
+                J'enlève ensuite - 22 à tous les bords gauche supérieur à 0.</br>
+                UPDATE `categories_interval` SET lft = lft - 22 WHERE lft &gt; 0</br>
+                Ensuite je supprime de la bdd toute les catégories de <span class="red-text">Blog</span> et <span
+                    class="red-text">Blog</span> lui-même.</br>
+
+                </br>
+                J'ai fait le test dans la bdd, ça a l'air de fonctionner</br>
+                <span class="green-text">Portfolio</span> à un intervalle de 1 et 6</br>
+                <span class="violet-text">print</span> à un intervalle de 2 et 3</br>
+                <span class="violet-text">Portfolio</span> à un intervalle de 4 et 5</br>
+
+                A voir aussi <a href="https://sqlpro.developpez.com/cours/arborescence/">Developpez.com</a>
             </p>
 
 

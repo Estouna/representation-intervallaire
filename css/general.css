@@ -4,10 +4,6 @@
     box-sizing: border-box;
 }
 
-a {
-    text-decoration: none;
-}
-
 a, .unselectable {
     -moz-user-select: none;
     -webkit-user-select: none;
