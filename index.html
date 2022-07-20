@@ -20,7 +20,7 @@
         <div class="btn unselectable">
             <div class="spin-container">
                 <div class="front">
-                    <div class="croquis b1">Croquis</div>
+                    <div class="croquis b1">Schéma</div>
                 </div>
                 <div class="back">
                     <div class="barSpin b2 b-back"></div>
@@ -28,30 +28,50 @@
                 </div>
             </div>
         </div>
-        <div id="panel" class="flex centerAll">
+        <div id="panel" class="column centerAll">
 
             <figure class="img-container flex justify-center">
                 <img class="imgBurger" src="images/Capture d’écran 2022-07-15 102736.png"
                     alt="Croquis de l'organisation des catégories">
             </figure>
 
+            <nav id="nav-2" class="unselectable fs-9 w-100 my-2">
+                <ul class="nav-ul-2 row justify-around">
+                    <li class="nav-li"><a href="#parent" class="nav-a-2">Système parent_id</a></li>
+                    <li class="nav-li"><a href="#interval" class="nav-a-2">Système intervallaire</a></li>
+                    <li class="nav-li"><a href="#query" class="nav-a-2">Résumé requêtes</a></li>
+                    <li class="nav-li"><a href="#tests" class="nav-a-2">Test</a></li>
+                </ul>
+            </nav>
+
         </div>
 
-        <h1 class="h1 fs-4 mt-2 p-1-limit">La représentation intervallaire</h1>
-        <section class="section column w-70-limit my-4 p-1-limit rounded-3">
+
+        <h1 id="h1-top" class="h1 text-center fs-4 my-4 py-1 w-80-limit">La représentation intervallaire</h1>
+
+        <nav id="nav" class="w-100 flex justify-center unselectable fs-7">
+            <ul class="nav-ul column centerAll p-3 w-30-limit rounded-circle">
+                <li class="nav-li mt-2"><a href="#parent" class="nav-a">Système avec parent_id</a></li>
+                <li class="nav-li"><a href="#interval" class="nav-a">Système intervallaire</a></li>
+                <li class="nav-li"><a href="#query" class="nav-a">Résumé des requêtes</a></li>
+                <li class="nav-li"><a href="#tests" class="nav-a">Test</a></li>
+            </ul>
+        </nav>
+
+        <section class="section column w-60-limit my-4 p-1-limit rounded-3">
 
 
-            <p class="text my-2 p-1-limit">
+            <p class="text my-3 p-1-limit">
                 La représentation intervallaire est un système qui va permettre au sein d'une table de stocker
                 des données qui sont organisées hiérarchiquement.
             </p>
 
-            <figure class="flex justify-center w-100 my-1">
+            <figure class="flex justify-center w-100 my-2">
                 <img class="img1 w-60-limit" src="images/Capture d’écran 2022-07-15 102736.png"
                     alt="Croquis de l'organisation des catégories">
             </figure>
 
-            <p class="text my-2 p-1-limit">
+            <p class="text my-3 p-1-limit">
                 Le croquis ci-dessus montre un exemple concret, celui d'un site (vous pouvez accèder à ce croquis en
                 cliquant sur le bouton en haut à droite).</br>
                 </br>
@@ -61,20 +81,20 @@
                 Comment stocker ça sur une base de données ?
             </p>
 
-            <h2 class="h2 fs-5 text-center my-2">Système avec un parent_id</h2>
+            <h2 id="parent" class="h2 fs-5 text-center my-3">Système avec un parent_id</h2>
 
-            <p class="text my-2 p-1-limit">
+            <p class="text my-3 p-1-limit">
                 La première solution qui paraît la plus naturelle est de mettre un parent_id, nous allons voir les
                 défauts de ce système.</br>
                 Table avec parent_id :
             </p>
 
-            <figure class="flex justify-center w-100 my-1">
+            <figure class="flex justify-center w-100 my-2">
                 <img class="img1 w-60-limit" src="images/Capture d’écran 2022-07-15 171635.png"
                     alt="Image de la base de données">
             </figure>
 
-            <p class="text my-2 p-1-limit">
+            <p class="text my-3 p-1-limit">
                 Nous avons donc à chaque fois un parent_id :</br>
                 </br>
                 - <span class="red-text">Blog</span> est la catégorie racine comme il n'a pas de parent il a la valeur
@@ -89,7 +109,7 @@
                 - Et ainsi de suite...
             </p>
 
-            <p class="text mb-2 p-1-limit">
+            <p class="text mb-3 p-1-limit">
                 Nous allons voir pourquoi ce système à des limites et pourquoi on va utilser l'intervallaire.</br>
                 </br>
                 Par exemple si on prend la catégorie <span class="violet-text">2D</span> et que l'on veut savoir si elle
@@ -106,7 +126,7 @@
                     alt="Image résultat de la requête">
             </figure>
 
-            <p class="text my-2 p-1-limit">
+            <p class="text my-3 p-1-limit">
                 Nous voyons que la catégorie <span class="violet-text">2D</span> à comme parent la catégorie avec l'id
                 2.</br>
                 </br>
@@ -121,7 +141,7 @@
                     alt="Image résultat de la requête">
             </figure>
 
-            <p class="text my-2 p-1-limit">
+            <p class="text my-3 p-1-limit">
                 Nous voyons maintenant que la catégorie avec l'id 2 est <span class="blue-text">Graphisme</span> et
                 qu'elle a comme parent l'id 1.</br>
                 </br>
@@ -136,7 +156,7 @@
                     alt="Image résultat de la requête">
             </figure>
 
-            <p class="text my-2 p-1-limit">
+            <p class="text my-3 p-1-limit">
                 Nous arrivons enfin au bout en voyant la catégorie <span class="red-text">Blog</span> avec un parent_id
                 0, il aura fallu faire trois requêtes.</br>
                 </br>
@@ -154,7 +174,7 @@
                     alt="Image résultat de la requête">
             </figure>
 
-            <p class="text my-2 p-1-limit">
+            <p class="text my-3 p-1-limit">
                 Nous ne récupérons que les enfants directs mais pas leurs sous-catégories.</br>
                 </br>
                 Pour pouvoir les récupérer il faut faire une autre requête.</br>
@@ -168,7 +188,7 @@
                     alt="Image résultat de la requête">
             </figure>
 
-            <p class="text my-2 p-1-limit">
+            <p class="text my-3 p-1-limit">
                 En faisant cela nous avons les sous-catégories, mais rien ne nous dit que nous sommes en bout de chaîne,
                 ces enfants pourraient aussi avoir des sous-catégories...</br>
                 Donc on voit que c'est problématique, on est obligé de faire plusieurs requêtes, alors qu'on pourrait le
@@ -176,9 +196,9 @@
                 C'est là que la représentation intervallaire entre en jeu.
             </p>
 
-            <h2 class="h2 fs-5 text-center my-2">Système intervallaire</h2>
+            <h2 id="interval" class="h2 fs-5 text-center my-3">Système intervallaire</h2>
 
-            <p class="text my-2 p-1-limit">
+            <p class="text my-3 p-1-limit">
                 La représentation intervallaire est un peu compliquée à expliquer, je vais essayer d'être le plus clair
                 possible.</br>
                 </br>
@@ -189,7 +209,7 @@
                 plus complexes.
             </p>
 
-            <p class="text my-2 p-1-limit">
+            <p class="text my-3 p-1-limit">
                 Le croquis du site nous indique que (bouton en haut à droite) : </br>
                 </br>
                 - La catégorie <span class="red-text">Blog</span> à un bord gauche à 1 et un bord droit à 20, nous avons
@@ -203,7 +223,7 @@
                 l'infini avec des intervalles plus grands.</br>
             </p>
 
-            <p class="text mb-2 p-1-limit">
+            <p class="text mb-3 p-1-limit">
                 Pour résumé le croquis nous savons qu'entre l'intervalle :</br>
                 </br>
                 - 1 et 20 se trouvent les sous-catégories de <span class="red-text">Blog</span></br>
@@ -213,7 +233,7 @@
                 - 21 et 26 les sous-catégories de <span class="green-text">Portfolio</span></br>
             </p>
 
-            <p class="text mb-2 p-1-limit">
+            <p class="text mb-3 p-1-limit">
                 Nous allons maintenant voir comment construire le début de l'arbre.</br>
                 </br>
                 On commence par créer une table categories_interval avec cinq colonnes.</br>
@@ -230,12 +250,12 @@
                 Champs de catégories_interval :
             </p>
 
-            <figure class="flex justify-center w-100 my-1">
+            <figure class="flex justify-center w-100 my-2">
                 <img class="img1 w-60-limit" src="images/Capture d’écran 2022-07-16 163838.png"
                     alt="Croquis de l'organisation des catégories">
             </figure>
 
-            <p class="text my-2 p-1-limit">
+            <p class="text my-3 p-1-limit">
                 Nous pouvons maintenant insérer <span class="red-text">Blog</span> dans notre table
                 categories_interval.</br>
                 </br>
@@ -254,12 +274,12 @@
                 Insertion de <span class="red-text">Blog</span> dans categories_interval:
             </p>
 
-            <figure class="flex justify-center w-100 my-1">
+            <figure class="flex justify-center w-100 my-2">
                 <img class="img1 w-60-limit" src="images/Capture d’écran 2022-07-17 103208.png"
                     alt="Croquis de l'organisation des catégories">
             </figure>
 
-            <p class="text my-2 p-1-limit">
+            <p class="text my-3 p-1-limit">
                 Si on veut créer une sous-catégorie de <span class="red-text">Blog</span>, on l'insère aussi dans notre
                 table.</br>
                 </br>
@@ -273,12 +293,12 @@
                 Insertion de <span class="blue-text">Graphisme</span> dans categories_interval:
             </p>
 
-            <figure class="flex justify-center w-100 my-1">
+            <figure class="flex justify-center w-100 my-2">
                 <img class="img1 w-60-limit" src="images/Capture d’écran 2022-07-17 104308.png"
                     alt="Croquis de l'organisation des catégories">
             </figure>
 
-            <p class="text my-2 p-1-limit">
+            <p class="text my-3 p-1-limit">
                 Nous obtenons cette table :
             </p>
 
@@ -287,17 +307,17 @@
                     alt="Croquis de l'organisation des catégories">
             </figure>
 
-            <p class="text my-2 p-1-limit">
+            <p class="text my-3 p-1-limit">
                 Nous n'allons pas faire tout l'arbre, mais c'est toujours le même principe que l'exemple ci-dessus.</br>
                 A la fin vous aurez une grosse table qui ressemblera à ça :
             </p>
 
-            <figure class="flex justify-center w-100 my-1">
+            <figure class="flex justify-center w-100 my-2">
                 <img class="img1 w-40-limit" src="images/Capture d’écran 2022-07-16 174800.png"
                     alt="Croquis de l'organisation des catégories">
             </figure>
 
-            <p class="text my-2 p-1-limit">
+            <p class="text my-3 p-1-limit">
                 On pourrait se dire que c'est vraiment compliqué, pourquoi le faire ?</br>
                 Nous allons voir maintenant pourquoi.</br>
                 </br>
@@ -315,7 +335,7 @@
                     alt="Croquis de l'organisation des catégories">
             </figure>
 
-            <p class="text my-2 p-1-limit">
+            <p class="text my-3 p-1-limit">
                 Les parents de la catégorie <span class="violet-text">2D</span> sont les parents qui englobent son
                 intervalle de 3 et 4.</br>
                 Ce qui veut dire que les parents de la catégorie <span class="violet-text">2D</span> ont un bord gauche
@@ -333,7 +353,7 @@
                     alt="Résultat de la requête">
             </figure>
 
-            <p class="text my-2 p-1-limit">
+            <p class="text my-3 p-1-limit">
                 On voit que l'on a récupéré tout les parents.</br>
                 </br>
                 Si on modifie la requête de cette façon :</br>
@@ -347,7 +367,7 @@
                     alt="Résultat de la requête">
             </figure>
 
-            <p class="text my-2 p-1-limit">
+            <p class="text my-3 p-1-limit">
                 On peut organiser le résultat en mettant un ORDER BY lft ASC, pour avoir les parents en haut et les
                 enfants en bas (ou l'inverse avec DESC), sur cet exemple ce n'est pas nécessaire puisqu'on les a
                 enregistré dans le bon ordre.</br>
@@ -367,7 +387,7 @@
                     alt="Résultat de la requête">
             </figure>
 
-            <p class="text my-2 p-1-limit">
+            <p class="text my-3 p-1-limit">
                 Nous avons bien récupéré toutes les sous-catégories de <span class="red-text">Blog</span>.</br>
                 D'abord les sous-catégories <span class="blue-text">Graphisme</span>, <span
                     class="blue-text">Music</span> et <span class="blue-text">Developpement</span> puis ensuite tous
@@ -388,12 +408,12 @@
                     alt="Résultat de la requête">
             </figure>
 
-            <p class="text my-2 p-1-limit">
+            <p class="text my-3 p-1-limit">
                 Nous avons bien récupéré les enfants de l'arbre, mais cette fois seulement les feuilles, le bout de
                 l'arborescence. Donc c'est pluôt pratique.
             </p>
 
-            <p class="text my-2 p-1-limit">
+            <p class="text my-3 p-1-limit">
                 En revanche, ce système à un petit inconvénient (ou un gros inconvénient ^^) l'insertion est un peu plus
                 complexe que d'habitude.</br>
                 Imaginons qu'on veuille rajouter une catégorie dans <span class="red-text">Blog</span>, comment ça se
@@ -429,7 +449,7 @@
                     alt="Insertion de la catégorie vidéo">
             </figure>
 
-            <p class="text my-2 p-1-limit">
+            <p class="text my-3 p-1-limit">
                 Ensuite si nous regardons notre table on voit qu'en ayant décaler les intervalles supérieurs à 19 de 2,
                 notre nouvelle catégorie <span class="blue-text">Vidéo</span> n'entre en conflit avec aucunes autres.
             </p>
@@ -439,7 +459,7 @@
                     alt="Résultat de la requête">
             </figure>
 
-            <p class="text my-2 p-1-limit">
+            <p class="text my-3 p-1-limit">
                 Continuons, imaginons que plus tard nous ayons besoin de rajouter des sous-catégories à la catégorie
                 <span class="blue-text">Vidéo</span>, et bien cela va se faire un peu de la même façon.</br>
                 Nous ajoutons d'abord + 2 à tous les bords droit mais cette fois supérieur à 20.</br>
@@ -453,7 +473,7 @@
                     alt="Résultat de la requête">
             </figure>
 
-            <p class="text my-2 p-1-limit">
+            <p class="text my-3 p-1-limit">
                 Nous voyons que la catégorie <span class="blue-text">Vidéo</span> à maintenant un intervalle de 20 et
                 23, donc qu'elle peut maintenant accueillir un enfant.</br>
                 Les autres catégories on bien été modifiées aussi, il n'y a pas de conflit.</br>
@@ -469,7 +489,7 @@
                     alt="Insertion de la catégorie vidéo">
             </figure>
 
-            <p class="text my-2 p-1-limit">
+            <p class="text my-3 p-1-limit">
                 Nous aurons besoin aussi de pouvoir supprimer un élément, nous allons voir comment faire.</br>
                 Pour supprimer la catégorie <span class="violet-text">Action</span>, nous allons encore décaler les
                 bords.
@@ -489,7 +509,90 @@
                     alt="Résultat de la requête">
             </figure>
 
-            <p class="text my-2 p-1-limit">
+            <h2 id="query" class="h2 fs-5 text-center my-5">Résumé des requêtes</h2>
+
+            <h3 class="h3">SELECT :</h3>
+
+            <p class="text my-1 p-1-limit">
+                <span class="yellow-text fs-5">Sélectionner toutes les feuilles de l'arbre (bout de l'arborescence)
+                    :</span></br>
+                Comme on sait que les feuilles de l'arbre ont un intervalle qui vaut 1, il suffit de rechercher les
+                éléments dont la longueur de l'intervalle vaut 1 (la catégorie <span class="blue-text">Vidéo</span>, est
+                bien une feuille puisque nous avions supprimé sa sous-catégorie).</br>
+                </br>
+                <span class="lightViolet-text">
+                    SELECT * FROM `categories_interval`</br>
+                    WHERE rght - lft = 1
+                </span>
+                </br></br>
+            </p>
+
+            <figure class="w-100 mb-3">
+                <img class="img1 w-40-limit" src="images/Capture d’écran 2022-07-20 163748.png"
+                    alt="Résultat de la requête">
+            </figure>
+
+            <p class="text my-1 p-1-limit">
+                <span class="yellow-text fs-5">Sélectionner toutes les feuilles d'une catégorie :</span></br>
+                Il va falloir rechercher encore fois les élément dont la longueur d'intervalle vaut 1, mais aussi
+                restreindre la plage de recherche des bords à ceux de la catégorie.</br>
+                Exemple avec la catégorie <span class="blue-text">Music</span> qui a un intervalle de 8 et 13.</br>
+                </br>
+                <span class="lightViolet-text py-2">
+                    SELECT * FROM `categories_interval`</br>
+                    WHERE rght - lft = 1</br>
+                    AND lft &gt; 8</br>
+                    AND rght &lt; 13
+                </span>
+                </br></br>
+            </p>
+
+            <figure class="w-100 mb-3">
+                <img class="img1 w-40-limit" src="images/Capture d’écran 2022-07-20 164343.png"
+                    alt="Résultat de la requête">
+            </figure>
+
+            <p class="text my-1 p-1-limit">
+                <span class="yellow-text fs-5">Sélectionner tous les nœuds : (catégories qui ont des
+                    sous-catégories)</span></br>
+                Il suffit juste de rechercher tous les éléments dont la longueur de l'intervalle est supérieur à 1.</br>
+                </br>
+                <span class="lightViolet-text py-2">
+                    SELECT * FROM `categories_interval`</br>
+                    WHERE rght - lft &gt; 1</br>
+                </span>
+                </br></br>
+            </p>
+
+            <figure class="w-100 mb-3">
+                <img class="img1 w-40-limit" src="images/Capture d’écran 2022-07-20 164535.png"
+                    alt="Résultat de la requête">
+            </figure>
+
+            <p class="text my-1 p-1-limit">
+                <span class="yellow-text fs-5">Sélectionner tous les nœuds sous une catégorie :</span></br>
+                En plus de chercher les éléments dont la longueur de l'intervalle est supérieure à 1 (donc les nœuds),
+                il faut aussi restreindre la plage de recherche des bords à ceux de la catégorie qui les englobe.</br>
+                Exemple : tous les nœuds sous la catégorie <span class="red-text">Blog</span> qui a un intervalle de 1
+                et 22.</br>
+                </br>
+                <span class="lightViolet-text py-2">
+                    SELECT * FROM `categories_interval`</br>
+                    WHERE rght - lft &gt; 1</br>
+                    AND lft &gt; 1</br>
+                    AND rght &lt; 22
+                </span>
+                </br></br>
+            </p>
+
+            <figure class="w-100 mb-3">
+                <img class="img1 w-40-limit" src="images/Capture d’écran 2022-07-20 164702.png"
+                    alt="Résultat de la requête">
+            </figure>
+
+            <h2 id="tests" class="h2 fs-5 text-center my-3">Tests</h2>
+
+            <p class="text my-3 p-1-limit">
                 A TESTER PAS EXPLIQUER DANS LE TUTO (je suppute que ça doit marcher ^^)</br>
                 </br>
                 Si je veux supprimer <span class="red-text">Blog</span> et tous ces enfants, il faut que je compte le
@@ -519,8 +622,8 @@
 
 
         <!-- TEST -->
-        <div class="container flex justify-center w-100 my-2">
-            <div class="box flex centerAll">Test texte Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+        <div class="container flex justify-center w-100 my-5">
+            <p class="box flex centerAll">Test texte Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                 Obcaecati exercitationem quos facere deserunt repellendus, nemo corrupti asperiores fugit quod
                 perferendis possimus aspernatur omnis velit itaque eaque saepe cupiditate esse ducimus, sequi fuga sunt
                 quis voluptate. Fugit iste ab voluptatibus quisquam blanditiis, optio nulla tempora praesentium sequi
@@ -535,8 +638,18 @@
                 hic neque nisi incidunt fugit molestias aliquid quae sit voluptates! Ad nemo inventore officia natus rem
                 nisi quod adipisci deleniti. Molestiae natus perspiciatis incidunt temporibus reiciendis deserunt odit,
                 nisi eligendi aliquid ducimus quod obcaecati quas doloribus explicabo in. Voluptate, natus eaque
-                reprehenderit ab quos nostrum!</div>
+                reprehenderit ab quos nostrum!
         </div>
+        </p>
+
+        <a class="btn-return column centerAll" href="#h1-top">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-arrow-up btn-arrow" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                    d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z" />
+            </svg>
+        </a>
+
     </main>
     <script src="js/burger.js"></script>
 </body>

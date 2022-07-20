@@ -1,44 +1,77 @@
 .body {
     background-color: var(--darkGrey);
+    color: var(--text-white);
+}
+
+.text,
+.nav-ul {
+    font-family: var(--font-roboLight300);
+}
+
+.h1,
+.h2,
+.h3 {
+    font-family: var(--font-poppLight200);
+    letter-spacing: 1px;
 }
 
 .h1 {
-    font-family: var(--font-poppLight200);
-    color: var(--text-white);
-    letter-spacing: 1px;
-    border-radius: 1.8em 0 1.8em 0;
+    border-radius: 2em 0 2em 0;
 }
 
 .h2{
-    font-family: var(--font-poppLight200);
-    color: var(--yellow);
+    color: var(--text-green2);
+    text-shadow: 1px 1px 1px var(--text-black);
     background-color: var(--darkGrey);
     border-radius: 10px;
     letter-spacing: 1px;
     border-radius: 1.8em 0 1.8em 0;
+    box-shadow: 3px 3px 1px var(--black),
+    -1px -1px 1px rgb(205, 205, 205);
+    padding: 0.5em;
+}
+
+.nav-ul, .h1, .section {
+    background-color: rgba(0, 0, 0, 0.475);
+    box-shadow: 10px 10px 15px var(--black),
+    inset 0 0 0.4em 0.05em var(--green2),
+    inset 0 0 2em 1em var(--black);
+    outline: 1px solid var(--green2);
+}
+
+.nav-a{
+    display: block;
+    text-decoration: none;
+    color: var(--text-white);
+    letter-spacing: 2px;
+    padding: 0.7em;
+}
+
+.nav-a-2{
+    text-decoration: none;
+    color: var(--text-white);
+}
+
+.nav-a:hover{
+    letter-spacing: 3px;
 }
 
 a{
     color: var(--text-blue);
+    transition: 0.6s
 }
 
-.section, 
-.h1 {
-    background-color: rgba(0, 0, 0, 0.555);
-    box-shadow: 10px 10px 15px var(--black),
-        inset 0 0 0.16em 0.08em rgba(255, 202, 58, 0.842);
-    outline: 1px solid var(--yellow);
-    color: var(--text-white);
+a:hover{
+    color: var(--text-green2);
 }
 
 .text {
-    font-family: var(--font-roboLight300);
-    font-size: max(0.9vw, 12px);
+    font-size: max(0.8vw, 12px);
     letter-spacing: 1px;
     line-height: 2.5em;
     background-color: var(--darkGrey);
-    outline: 1px solid var(--yellow);
-    box-shadow: inset 0 0 1em 0.40em var(--black);
+    outline: 1px solid var(--green2);
+    box-shadow: inset 0 0 2em 0.60em var(--black);
     border-radius: 10px;
 }
 
@@ -46,18 +79,21 @@ a{
 .blue-text {color: var(--blue);}
 .violet-text {color: var(--violet);}
 .green-text {color: var(--text-green2);}
+.yellow-text {color: var(--text-yellow);}
+.lightViolet-text{color: rgb(243, 211, 255);}
 
 .img1 {
     box-shadow: 0 0 5px 1px var(--white);
     border-radius: 5px;
 }
 
+
 /*
-    ----------------------------------------------------------- MENU BURGER -----------------------------------------------------------
+----------------------------------------------------------- MENU BURGER AND BTN RETURN -----------------------------------------------------------
 */
 
 /* 
-    ------------- BUTTON -------------
+------------- BUTTON -------------
 */
 .btn {
     background: transparent;
@@ -66,15 +102,15 @@ a{
     right: 10px;
     border: none;
     cursor: pointer;
-    transition: transform 0.5s ease-in-out;
+    transition: transform 0.3s ease-in-out;
     z-index: 2;
 }
 
 .spin-container {
     width: 60px;
-    height: 25px;
+    height: 20px;
     position: relative;
-    transition: transform 0.5s ease-in-out;
+    transition: transform 0.3s ease-in-out;
     transform-style: preserve-3d;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
@@ -92,31 +128,18 @@ a{
     perspective: 1500px;
     transform-style: preserve-3d;
     border-radius: 5px;
-}
-
-.front {
     background-color: var(--black);
-    border: 1px solid var(--yellow);
 }
 
-.back {
-    background-color: var(--red);
-    border: 1px solid var(--white);
-    transform: rotateY(180deg);
-}
+.back {transform: rotateY(180deg);}
 
 .croquis {
-    color: var(--text-white);
-    font-size: 85%;
+    font-size: 80%;
     transition: 0.5s;
 }
 
-.croquis:hover {
-    color: var(--text-yellow);
-}
-
 .barSpin {
-    width: 30%;
+    width: 20%;
     height: 2px;
     background: var(--white);
     border-radius: 10px;
@@ -132,30 +155,23 @@ a{
     top: 50%;
 }
 
-.b1 {
-    transform: translate(-50%, -9px) translateZ(20px);
-}
-
-.b2.b-back {
-    transform: translate(-50%, -1px) translateZ(20px) rotate(45deg);
-}
-
-.b3.b-back {
-    transform: translate(-50%, -1px) translateZ(20px) rotate(-45deg);
-}
+.b1 {transform: translate(-50%, -8px) translateZ(20px);}
+.b2.b-back {transform: translate(-50%, -1px) translateZ(20px) rotate(45deg);}
+.b3.b-back {transform: translate(-50%, -1px) translateZ(20px) rotate(-45deg);}
 
 /* 
-    ------------- PANEL -------------
+------------- PANEL -------------
 */
 #panel {
     position: fixed;
     top: 30px;
-    right: -8px;
-    width: max(50vw, 325px);
+    right: -4px;
+    width: max(70vw, 320px);
     /*passe le menu hors écran sur la droite*/
     transform: translateX(100%);
-    transition: transform 0.5s ease-in-out;
-    background-color: rgba(0, 0, 0, 0.541);
+    transition: transform 0.3s ease-in-out;
+    background-color: var(--black);
+    outline: 1px solid var(--green2);
     border-radius: 10px;
     z-index: 1;
 }
@@ -173,20 +189,58 @@ a{
     margin: 5px;
 }
 
-/*
-    ----------------------------------------------------------- MEDIAQUERIES -----------------------------------------------------------
-*/
-
-@media only screen and (orientation: landscape) and (max-height: 600px) {
-    #panel {
-        width: 100%;
-    }
+.btn-return,
+.front,
+.back {
+    box-shadow: 0 0 1px var(--green2),
+    0 0 2px var(--green2),
+    0 0 4px var(--green2),
+    0 0 6px var(--green2);
+    transition: 0.5s;
 }
 
-
+.btn-return:hover,
+.front:hover,
+.back:hover {
+    box-shadow: 0 0 1px var(--white),
+    0 0 2px var(--white),
+    0 0 4px var(--white),
+    0 0 6px var(--white);
+}
 
 /* 
-    ------------- TEST -------------
+------------- BTN RETURN -------------
+*/
+.btn-return {
+    position: fixed;
+    background-color: var(--black);
+    color: var(--text-white);
+    width: 17px;
+    height: 50px;
+    bottom: 4%;
+    right: 0.3%;
+    box-shadow: 0 0 1px var(--green2),
+    0 0 2px var(--green2),
+    0 0 4px var(--green2),
+    0 0 6px var(--green2);
+    border-radius: 10px;
+}
+
+.btn-arrow {
+    width: 15px;
+    height: 15px;
+    border-radius: 5px;
+}
+
+.btn-return:hover {
+    width: 40px;
+    height: 40px;
+    color: var(--white);
+    border-radius: 50%;
+}
+
+/*
+----------------------------------------------------------- TESTS -----------------------------------------------------------
 */
 .container {
     width: 100%;
@@ -197,8 +251,26 @@ a{
 }
 
 .box {
-    background-color: var(--blue);
+    font-family: var(--font-roboLight300);
+    font-size: max(0.9vw, 12px);
+    letter-spacing: 1px;
+    line-height: 2.5em;
+    background-color: var(--darkGrey);
+    outline: 1px solid var(--yellow);
+    box-shadow: inset 0 0 1em 0.40em var(--black);
+    border-radius: 10px;
     padding: calc(5px + 1vw);
     margin-right: calc(3px + 1vw);
     margin-left: calc(3px + 1vw);
 }
+
+/*
+    ----------------------------------------------------------- MEDIAQUERIES -----------------------------------------------------------
+*/
+@media only screen and (orientation: landscape) and (max-height: 600px) {
+    #panel {
+        width: 100%;
+    }
+}
+
+
