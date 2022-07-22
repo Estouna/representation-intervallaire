@@ -6,9 +6,12 @@ include 'includes/navbar.php';
 
 <main class="container">
 
+    <!-- 
+        -------------------------------------------------------- AFFICHE LISTE D'ARTICLES -------------------------------------------------------- 
+    -->
     <?php if (isset($_GET['id']) && !empty($_GET['id'])) : ?>
         <h1 class="text-primary text-center my-5"><?= get_name_categorie($_GET['id']) ?></h1>
-        <?php else : ?>
+    <?php else : ?>
         <h1 class="text-primary text-center my-5">Liste des articles</h1>
     <?php endif; ?>
 

@@ -7,5 +7,5 @@ function get_name_categorie($id)
     $name_categorie = $bdd->prepare('SELECT * FROM categories_interval WHERE id = ?');
     $name_categorie->execute(array($id));
     $name_categ = $name_categorie->fetch()['name'];
-    return $name_categ;  
+    return $name_categ;
 }

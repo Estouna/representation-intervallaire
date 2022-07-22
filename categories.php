@@ -9,11 +9,11 @@ include 'includes/navbar.php';
     <h1 class="text-primary text-center my-5">Catégories</h1>
 
     <!-- 
-        -------------------------------------------------------- CATEGORIES -------------------------------------------------------- 
+        -------------------------------------------------------- AFFICHE LES CATEGORIES RACINES -------------------------------------------------------- 
     -->
     <?php foreach ($categories as $category) : ?>
         <div class="border border-primary my-4 p-2 rounded">
-            <h2><a href="sous-categories?id=<?= $category['id'] ?>"><?= $category['name'] ?></a></h2>
+            <h2><a href="sub-categories?id=<?= $category['id'] ?>"><?= $category['name'] ?></a></h2>
         </div>
     <?php endforeach; ?>
 

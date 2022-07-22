@@ -18,5 +18,11 @@
                 <a class="nav-link" href="repInterval.html">Tuto</a>
             </li>
         </ul>
+
+        <ul class="navbar-nav mr-1">
+            <li class="nav-item">
+                <a class="nav-link" href="gestionCategories.php">Gestion des catégories</a>
+            </li>
+        </ul>
     </div>
 </nav>
