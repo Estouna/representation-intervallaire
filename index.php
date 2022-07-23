@@ -8,7 +8,7 @@ include 'includes/navbar.php';
 -->
 <main class="container">
 
-    <h1 class="text-primary text-center my-5">Accueil</h1>
+    <h1 class="text-white bg-primary text-center mt-2 mb-5 p-2">Accueil</h1>
 
 </main>
 

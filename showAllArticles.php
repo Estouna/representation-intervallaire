@@ -3,16 +3,16 @@ require_once 'actions/showAllArticlesAction.php';
 include 'includes/head.php';
 include 'includes/navbar.php';
 ?>
-
+<?= '__DIR__' ?>
 <main class="container">
 
     <!-- 
         -------------------------------------------------------- AFFICHE LISTE D'ARTICLES -------------------------------------------------------- 
     -->
     <?php if (isset($_GET['id']) && !empty($_GET['id'])) : ?>
-        <h1 class="text-primary text-center my-5"><?= get_name_categorie($_GET['id']) ?></h1>
+        <h1 class="text-white bg-primary text-center mt-2 mb-5 p-2"><?= get_name_categorie($_GET['id']) ?></h1>
     <?php else : ?>
-        <h1 class="text-primary text-center my-5">Liste des articles</h1>
+        <h1 class="text-white bg-primary text-center mt-2 mb-5 p-2">Liste des articles</h1>
     <?php endif; ?>
 
     <?php foreach ($articles as $article) : ?>
